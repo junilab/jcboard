@@ -3,14 +3,88 @@
 <head>
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<script src="{{ url_for('static', filename='jquery.js') }}" > </script>
 </head>
 
 <body>
-	<br><br><br><br>
-	<br><br><br><br>
-	<form style="text-align: center;" action="/" method="post">
-		Your Name : <input type="password" name="pin"/> <br><br>
-		<input type="submit" value="확 인"/>
-	</form>
+<br>
+<table class="main_table" align="center" border="0" width="500">
+	<tr align="center" bgcolor="white">
+		<th><a href="#CLK_MAIN01" id="CLK_MAIN01_TAB"><img src="../static/thema1.png" width="100%"></a></th>
+	</tr>
+	<tr><td>
+		<div class="maintab_in_content">
+			<table id="CLK_MAIN01" border="1" width="100%" height="500">
+			<tr><td align="center"> Contents1 </td></tr>
+			</table>
+		</div>
+	</td></tr>
+	<tr align="center" bgcolor="white">
+		<th><a href="#CLK_MAIN02" id="CLK_MAIN02_TAB"><img src="../static/thema2.png" width="100%"></a></th>
+	</tr>
+	<tr><td>
+		<div class="maintab_in_content">
+			<table id="CLK_MAIN02" border="1" width="100%" height="500">
+			<tr><td align="center"> Contents2 </td></tr>
+			</table>
+		</div>
+	</td></tr>
+	<tr align="center" bgcolor="white">
+		<th><a href="#CLK_MAIN03" id="CLK_MAIN03_TAB"><img src="../static/thema3.png" width="100%"></a></th>
+	</tr>
+	<tr><td>
+		<div class="maintab_in_content">
+			<table id="CLK_MAIN03" border="1" width="100%" height="500">
+			<tr><td align="center"> Contents3 </td></tr>
+			</table>
+		</div>
+	</td></tr>
+	<tr align="center" bgcolor="white">
+		<th><a href="#CLK_MAIN04" id="CLK_MAIN04_TAB"><img src="../static/thema4.png" width="100%"></a></th>
+	</tr>
+	<tr><td>
+		<div class="maintab_in_content">
+			<table id="CLK_MAIN04" border="1" width="100%" height="500">
+			<tr><td align="center"> Contents4 </td></tr>
+			</table>
+		</div>
+	</td></tr>
+	<tr align="center" bgcolor="white">
+		<th><a href="#CLK_MAIN05" id="CLK_MAIN05_TAB"><img src="../static/thema5.png" width="100%"></a></th>
+	</tr>
+	<tr><td>
+		<div class="maintab_in_content">
+			<table id="CLK_MAIN05" border="1" width="100%" height="500">
+			<tr><td align="center"> Contents5 </td></tr>
+			</table>
+		</div>
+	</td></tr>
+</table>
+
+	<script>
+		$(function(){
+			$('.maintab_in_content > table').hide();
+			$('.main_table  a').click(function () {
+				$('.maintab_in_content > table').hide().filter(this.hash).fadeIn();
+
+				var oldTab = sessionStorage.getItem('MainTab')
+				if(oldTab == $(this).prop("id")){
+					$('.maintab_in_content > table').hide().filter(this.hash).hide();
+					sessionStorage.setItem('MainTab', null);
+				}
+				else{
+					const element = document.getElementById($(this));
+					sessionStorage.setItem('MainTab', $(this).prop("id"));
+				}
+				return false;
+			});
+
+			var oldTab = sessionStorage.getItem('MainTab')
+			if(!oldTab)
+				document.getElementById("CLK_MAIN01_TAB").click();
+			else
+				document.getElementById(oldTab).click();
+ 		});
+	</script>
 </body>
 </html>

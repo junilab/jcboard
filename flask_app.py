@@ -8,4 +8,4 @@ app = Flask(__name__)
 def main():
 	return render_template("main.html")
 
-#app.run(host='202.68.230.185')
+app.run(host='202.68.230.185', debug=True)
